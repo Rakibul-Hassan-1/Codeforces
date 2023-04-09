@@ -1,0 +1,1 @@
+{"name":"Local: new","url":"d:\\Programming\\C++ programming\\new.cpp","tests":[{"id":1678811132232,"input":"7\n4\nmeOw\n14\nmMmeoOoWWWwwwW\n3\nmew\n7\nMmeEeUw\n4\nMEOW\n6\nMmyaVW\n5\nmeowA","output":"YES\nYES\nNO\nNO\nYES\nNO\nNO"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Programming\\C++ programming\\new.cpp","group":"local","local":true}
