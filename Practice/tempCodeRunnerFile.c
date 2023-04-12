@@ -1,1 +1,0 @@
-printf("%d iteam added!\n", totaliteam);
