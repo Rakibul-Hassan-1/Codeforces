@@ -12,6 +12,7 @@
 #define ff first
 #define ss second
 #define endl '\n'
+const ll mod = 1e9 + 7;
 #define gcd(aaa, aaaa) __gcd((aaa), (aaaa));
 #define lcm(aaa, aaaa) (abs((aaa) * (aaaa)) / gcd(aaa, aaaa))
 #define TestCase() \
@@ -22,33 +23,44 @@
     ios_base ::sync_with_stdio(0); \
     cin.tie(0);                    \
     cout.tie(0)
-
 using namespace std;
 
-void solve()
-{
-    int n, m, k, h;
-    cin >> n >> m >> k >> h;
-    int ans = 0;
-    for (int i = 0; i < n; i++)
-    {
-        int x;
-        cin >> x;
-
-        if ((h != x) && abs(h - x) % k == 0 && abs(h - x) <= (m - 1) * k)
-            ans++;
-
-    }
-    cout << ans << endl;
-}
 int main()
 {
     fasterIO();
-    int t;
-    cin >> t;
-    while (t--)
+
+    int n;
+    cin >> n;
+    vector<string> a(n);
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    sort(a.begin(), a.end(), [&](string x, string y)
+         { return x.size() < y.size(); });
+
+    bool flag = true;
+
+    for (int i = 0; i < n - 1; i++)
     {
-        solve();
+        string s = a[i + 1];
+        int pos = s.find(a[i]);
+        if (pos == -1)
+        {
+            flag = false;
+            break;
+        }
     }
+
+    if (flag)
+    {
+        cout << "YES" << endl;
+        for (auto x : a)
+        {
+            cout << x << endl;
+        }
+    }
+    else
+        cout << "NO" << endl;
+
     return 0;
 }

@@ -22,33 +22,32 @@
     ios_base ::sync_with_stdio(0); \
     cin.tie(0);                    \
     cout.tie(0)
-
 using namespace std;
 
 void solve()
 {
-    int n, m, k, h;
-    cin >> n >> m >> k >> h;
-    int ans = 0;
-    for (int i = 0; i < n; i++)
+    int n, m;
+    string a, b;
+    cin >> n >> m >> a >> b;
+    bool flag = 0;
+    for (int i = 0; i < 8; i++)
     {
-        int x;
-        cin >> x;
-
-        if ((h != x) && abs(h - x) % k == 0 && abs(h - x) <= (m - 1) * k)
-            ans++;
-
+        if (a.find(b) != string ::npos)
+        {
+            flag = true;
+            cout << i << endl;
+            break;
+        }
+        a += a;
     }
-    cout << ans << endl;
+    if (!flag)
+        cout << -1 << endl;
 }
 int main()
 {
     fasterIO();
-    int t;
-    cin >> t;
-    while (t--)
-    {
+    TestCase()
         solve();
-    }
+
     return 0;
 }

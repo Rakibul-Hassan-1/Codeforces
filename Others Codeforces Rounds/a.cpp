@@ -22,33 +22,17 @@
     ios_base ::sync_with_stdio(0); \
     cin.tie(0);                    \
     cout.tie(0)
-
 using namespace std;
 
 void solve()
 {
-    int n, m, k, h;
-    cin >> n >> m >> k >> h;
-    int ans = 0;
-    for (int i = 0; i < n; i++)
-    {
-        int x;
-        cin >> x;
-
-        if ((h != x) && abs(h - x) % k == 0 && abs(h - x) <= (m - 1) * k)
-            ans++;
-
-    }
-    cout << ans << endl;
+    
 }
 int main()
 {
     fasterIO();
-    int t;
-    cin >> t;
-    while (t--)
-    {
+    TestCase()
         solve();
-    }
+
     return 0;
 }

@@ -3,7 +3,8 @@
         "*html": "html",
         "iostream": "cpp",
         "random": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "chrono": "cpp"
     },
     "cph.general.onceMaintainerMessage": false
 }
