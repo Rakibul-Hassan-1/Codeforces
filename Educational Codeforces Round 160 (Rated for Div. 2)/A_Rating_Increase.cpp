@@ -30,27 +30,39 @@ vector<int> getDivisors(int n)
     return d;
 }
 
-void solve()
+void solve(string ab)
 {
-    int n;
-    cin >> n;
-    vector<int> v(n + 1);
-    for (int i = 0; i < n; i++)
-        cin >> v[i];
-    ll ans = v[0] - 1;
-    for (int i = 1; i < n; i++)
+    for (int i = 1; i < ab.size(); ++i)
     {
-        if (v[i] > v[i - 1])
+        string a_str = ab.substr(0, i);
+        string b_str = ab.substr(i);
+
+        if (a_str[0] == '0' || b_str[0] == '0')
+            continue;
+
+        int a = stoi(a_str);
+        int b = stoi(b_str);
+
+        // Check if b > a
+        if (b > a)
         {
-            ans += v[i] - v[i - 1];
+            cout << a << " " << b << endl;
+            return;
         }
     }
-    cout << ans << endl;
+    cout << "-1" << endl;
 }
+
 int main()
 {
     fasterIO();
-    TestCase()
-        solve();
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        string ab;
+        cin >> ab;
+        solve(ab);
+    }
     return 0;
 }

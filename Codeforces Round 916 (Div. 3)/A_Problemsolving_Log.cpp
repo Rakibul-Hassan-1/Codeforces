@@ -33,17 +33,17 @@ vector<int> getDivisors(int n)
 void solve()
 {
     int n;
-    cin >> n;
-    vector<int> v(n + 1);
-    for (int i = 0; i < n; i++)
-        cin >> v[i];
-    ll ans = v[0] - 1;
-    for (int i = 1; i < n; i++)
+    string s;
+    cin >> n >> s;
+    vector<int> count(26, 0);
+    for (char c : s)
+        count[c - 'A']++;
+
+    int ans = 0;
+    for (int i = 0; i < 26; i++)
     {
-        if (v[i] > v[i - 1])
-        {
-            ans += v[i] - v[i - 1];
-        }
+        if (count[i] >= i + 1)
+            ans++;
     }
     cout << ans << endl;
 }
@@ -54,3 +54,4 @@ int main()
         solve();
     return 0;
 }
+

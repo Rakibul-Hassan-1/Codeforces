@@ -32,20 +32,27 @@ vector<int> getDivisors(int n)
 
 void solve()
 {
-    int n;
+    ll n, mx = 0;
     cin >> n;
-    vector<int> v(n + 1);
+    unordered_map<char, ll> cnt;
     for (int i = 0; i < n; i++)
-        cin >> v[i];
-    ll ans = v[0] - 1;
-    for (int i = 1; i < n; i++)
     {
-        if (v[i] > v[i - 1])
-        {
-            ans += v[i] - v[i - 1];
-        }
+        char c;
+        cin >> c;
+        cnt[c]++;
+        mx = max(mx, cnt[c]);
     }
-    cout << ans << endl;
+    if (mx > n / 2)
+        cout << (2 * mx - n) << endl;
+
+    else
+    {
+        if (n % 2 == 1)
+            cout << 1 << endl;
+
+        else
+            cout << 0 << endl;
+    }
 }
 int main()
 {

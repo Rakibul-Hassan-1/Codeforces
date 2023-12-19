@@ -34,18 +34,46 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> v(n + 1);
+    vector<int> v(n), ans;
     for (int i = 0; i < n; i++)
         cin >> v[i];
-    ll ans = v[0] - 1;
-    for (int i = 1; i < n; i++)
+
+    sort(v.begin(), v.end());
+
+    while (v[0] != v.back())
     {
-        if (v[i] > v[i - 1])
+        int x = 0;
+        if (v[0] % 2 == 0 && v.back() % 2 == 0)
         {
-            ans += v[i] - v[i - 1];
+            x = 0;
+            ans.push_back(0);
         }
+        else if (v[0] % 2 == 0 && v.back() % 2 == 1)
+        {
+            x = 0;
+            ans.push_back(0);
+        }
+        else if (v[0] % 2 == 1 && v.back() % 2 == 0)
+        {
+            x = 1;
+            ans.push_back(1);
+        }
+        else if (v[0] % 2 == 1 && v.back() % 2 == 1)
+        {
+            x = 0;
+            ans.push_back(0);
+        }
+        v[0] = (v[0] + x) / 2;
+        v.back() = (v.back() + x) / 2;
     }
-    cout << ans << endl;
+
+    cout << ans.size() << endl;
+    if (ans.size() <= n)
+    {
+        for (auto i : ans)
+            cout << i << " ";
+        cout << endl;
+    }
 }
 int main()
 {

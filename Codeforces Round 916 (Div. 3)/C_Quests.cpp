@@ -32,20 +32,24 @@ vector<int> getDivisors(int n)
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> v(n + 1);
+    int n, k;
+    cin >> n >> k;
+    vector<int> a(n), b(n);
     for (int i = 0; i < n; i++)
-        cin >> v[i];
-    ll ans = v[0] - 1;
-    for (int i = 1; i < n; i++)
+        cin >> a[i];
+    for (int i = 0; i < n; i++)
+        cin >> b[i];
+
+    int ans = 0, mx = 0, besi = 0;
+    for (int i = 0; i < n; i++)
     {
-        if (v[i] > v[i - 1])
-        {
-            ans += v[i] - v[i - 1];
-        }
+        if (k == i)
+            break;
+        ans += a[i];
+        besi = max(besi, b[i]);
+        mx = max(ans + (k - i - 1) * besi, mx);
     }
-    cout << ans << endl;
+    cout << mx << endl;
 }
 int main()
 {
