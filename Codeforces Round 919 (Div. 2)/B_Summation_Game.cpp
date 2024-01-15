@@ -33,22 +33,45 @@ vector<int> getDivisors(int n)
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<pair<int, int>> a(n);
+    ll n, k, x;
+    cin >> n >> k >> x;
+    vector<int> v(n);
     for (int i = 0; i < n; i++)
-        cin >> a[i].first >> a[i].second;
-    sort(a.begin(), a.end());
+        cin >> v[i];
+    sort(v.begin(), v.end());
+    reverse(v.begin(), v.end());
 
-    ordered_set<int> pbds;
-    for (auto [x, y] : a)
-        pbds.insert(y);
-    ll ans = 0;
-    for (int i = 0; i < n; i++)
+    ll xsum = 0;
+    ll sum = 0, ans = 0, j = 0;
+    int count = 0;
+    for (int i = 0; i < x; i++)
+        xsum += v[i];
+    sum = accumulate(v.begin(), v.end(), sum) - xsum;
+    ans = sum - xsum;
+    for (int i = x; i < n; i++)
     {
-        pbds.erase(a[i].second);
-        ans += pbds.order_of_key(a[i].second);
+        sum -= v[i];
+        xsum += v[i];
+        xsum -= v[j++];
+        count++;
+        ans = max(ans, sum - xsum);
+        if (count == k)
+            break;
     }
+    ll idx = count;
+    if (count < k)
+    {
+        for (int i = idx; i < n; i++)
+        {
+            xsum -= v[i];
+            ans = max(ans, -xsum);
+            count++;
+            if (count == k)
+                break;
+        }
+    }
+    if (k == n)
+        ans = max(ans, (long long int)0);
     cout << ans << endl;
 }
 int main()

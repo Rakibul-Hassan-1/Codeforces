@@ -35,21 +35,40 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<pair<int, int>> a(n);
-    for (int i = 0; i < n; i++)
-        cin >> a[i].first >> a[i].second;
-    sort(a.begin(), a.end());
+    int minValue = INT_MIN;
+    int maxValue = INT_MAX;
+    set<int> st;
 
-    ordered_set<int> pbds;
-    for (auto [x, y] : a)
-        pbds.insert(y);
-    ll ans = 0;
     for (int i = 0; i < n; i++)
     {
-        pbds.erase(a[i].second);
-        ans += pbds.order_of_key(a[i].second);
+        int a, x;
+        cin >> a >> x;
+        if (a == 1)
+            minValue = max(minValue, x);
+        else if (a == 2)
+        {
+            maxValue = min(maxValue, x);
+        }
+        else if (a == 3)
+        {
+            st.insert(x);
+        }
     }
-    cout << ans << endl;
+
+    if (minValue > maxValue)
+    {
+        cout << 0 << endl;
+        return;
+    }
+
+    int count = maxValue - minValue + 1;
+    for (auto num : st)
+    {
+        if (num >= minValue && num <= maxValue)
+            count--;
+    }
+
+    cout << count << endl;
 }
 int main()
 {

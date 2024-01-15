@@ -33,23 +33,7 @@ vector<int> getDivisors(int n)
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<pair<int, int>> a(n);
-    for (int i = 0; i < n; i++)
-        cin >> a[i].first >> a[i].second;
-    sort(a.begin(), a.end());
-
-    ordered_set<int> pbds;
-    for (auto [x, y] : a)
-        pbds.insert(y);
-    ll ans = 0;
-    for (int i = 0; i < n; i++)
-    {
-        pbds.erase(a[i].second);
-        ans += pbds.order_of_key(a[i].second);
-    }
-    cout << ans << endl;
+   
 }
 int main()
 {
