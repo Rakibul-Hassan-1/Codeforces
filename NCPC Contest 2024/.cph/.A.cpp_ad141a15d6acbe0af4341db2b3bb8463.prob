@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"d:\\Codeforces\\NCPC\\A.cpp","tests":[{"id":1708415990076,"input":"2\n10 0 165\n10 10 1","output":"Case 1: Yes\nCase 2: Yes"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Codeforces\\NCPC\\A.cpp","group":"local","local":true}
